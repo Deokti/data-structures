@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "parser": "@babel/eslint-parser",
+  "plugins": [
+    "@babel/eslint-parser"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": false,
+        "useTabs": true,
+        "semi": true,
+        "trailingComma": "all",
+        "bracketSpacing": true,
+        "printWidth": 100,
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}
