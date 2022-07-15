@@ -1,4 +1,4 @@
-// Сравниваем скорость работы нескольких неализаций функций map
+// Сравниваем скорость работы нескольких реализаций функций map
 // https://measurethat.net/Benchmarks/Show/19828/0/comparison-of-three-map-functions
 // https://goo.su/9f8VCY (perf.js.hyoo.ru)
 
@@ -8,7 +8,7 @@ const ITERATIONS_ARRAY = 1_000_000;
 const testArr = new Array(VALUES_ARRAY).fill(42);
 const multiply = (num) => num * 2;
 
-// Данная функция писалась с index.js c разбором
+// Данная функция писалась в index.js c разбором
 function map(arr, callback) {
 	const _length = arr.length;
 
