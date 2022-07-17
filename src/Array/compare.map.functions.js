@@ -2,7 +2,7 @@
 // https://measurethat.net/Benchmarks/Show/19828/0/comparison-of-three-map-functions
 // https://goo.su/9f8VCY (perf.js.hyoo.ru)
 
-const VALUES_ARRAY = 10000;
+const VALUES_ARRAY = 1000;
 const ITERATIONS_ARRAY = 1_000_000;
 
 const testArr = new Array(VALUES_ARRAY).fill(42);
@@ -22,7 +22,7 @@ function map(arr, callback) {
 }
 
 // Самая обычная реализация map без каких-либо дополнений
-function arrayWithNoLength(arr, callback) {
+function arrayWithNoOptimization(arr, callback) {
 	const result = [];
 
 	for (let i = 0; i < arr.length; i++) {
@@ -46,7 +46,7 @@ function speedTest() {
 
 	console.time("Function ARRAY_WITH_NO_LENGTH");
 	for (let i = 0; i < ITERATIONS_ARRAY; i++) {
-		arrayWithNoLength(testArr, multiply);
+		arrayWithNoOptimization(testArr, multiply);
 	}
 	console.timeEnd("Function ARRAY_WITH_NO_LENGTH");
 
