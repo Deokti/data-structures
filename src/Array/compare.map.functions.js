@@ -2,24 +2,13 @@
 // https://measurethat.net/Benchmarks/Show/19828/0/comparison-of-three-map-functions
 // https://goo.su/9f8VCY (perf.js.hyoo.ru)
 
+const { _map } = require("./_map");
+
 const VALUES_ARRAY = 1000;
 const ITERATIONS_ARRAY = 1_000_000;
 
 const testArr = new Array(VALUES_ARRAY).fill(42);
 const multiply = (num) => num * 2;
-
-// Данная функция писалась в index.js c разбором
-function map(arr, callback) {
-	const _length = arr.length;
-
-	const result = new Array(_length);
-
-	for (let i = 0; i < _length; i++) {
-		result[i] = callback(arr[i], i, arr);
-	}
-
-	return result;
-}
 
 // Самая обычная реализация map без каких-либо дополнений
 function arrayWithNoOptimization(arr, callback) {
@@ -40,7 +29,7 @@ function mapHowArrayMethod(arr, callback) {
 function speedTest() {
 	console.time("Function MAP");
 	for (let i = 0; i < ITERATIONS_ARRAY; i++) {
-		map(testArr, multiply);
+		_map(testArr, multiply);
 	}
 	console.timeEnd("Function MAP");
 

@@ -9,7 +9,7 @@
  * - При написании использовать оптимизации
  */
 
-function map(arr, callback) {
+function _map(arr, callback) {
 	// Когда цикл начинается, он считывает длину массива на каждой итерации.
 	// Этим действием выносим число в отдельный блок памяти.
 	// Сказывается ли это на производительности — это вопрос.
@@ -28,4 +28,4 @@ function map(arr, callback) {
 	return result;
 }
 
-module.exports = { map };
+module.exports = { _map };
