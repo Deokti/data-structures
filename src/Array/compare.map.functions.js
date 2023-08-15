@@ -4,46 +4,46 @@
 
 const { _map } = require("./_map");
 
-const VALUES_ARRAY = 1000;
-const ITERATIONS_ARRAY = 1_000_000;
+const VALUES_ARRAY = 100_000_000;
+const ITERATIONS_ARRAY = 1;
 
 const testArr = new Array(VALUES_ARRAY).fill(42);
 const multiply = (num) => num * 2;
 
 // Самая обычная реализация map без каких-либо дополнений
 function arrayWithNoOptimization(arr, callback) {
-	const result = [];
+  const result = [];
 
-	for (let i = 0; i < arr.length; i++) {
-		result.push(callback(arr[i], i, arr));
-	}
+  for (let i = 0; i < arr.length; i++) {
+    result.push(callback(arr[i], i, arr));
+  }
 
-	return result;
+  return result;
 }
 
 // Метод массива, который в основном используется
 function mapHowArrayMethod(arr, callback) {
-	return arr.map(callback);
+  return arr.map(callback);
 }
 
 function speedTest() {
-	console.time("Function MAP");
-	for (let i = 0; i < ITERATIONS_ARRAY; i++) {
-		_map(testArr, multiply);
-	}
-	console.timeEnd("Function MAP");
+  console.time("Function MAP");
+  for (let i = 0; i < ITERATIONS_ARRAY; i++) {
+    _map(testArr, multiply);
+  }
+  console.timeEnd("Function MAP");
 
-	console.time("Function ARRAY_WITH_NO_LENGTH");
-	for (let i = 0; i < ITERATIONS_ARRAY; i++) {
-		arrayWithNoOptimization(testArr, multiply);
-	}
-	console.timeEnd("Function ARRAY_WITH_NO_LENGTH");
+  console.time("Function ARRAY_WITH_NO_LENGTH");
+  for (let i = 0; i < ITERATIONS_ARRAY; i++) {
+    arrayWithNoOptimization(testArr, multiply);
+  }
+  console.timeEnd("Function ARRAY_WITH_NO_LENGTH");
 
-	console.time("Function MAP_HOW_ARRAY_METHOD");
-	for (let i = 0; i < ITERATIONS_ARRAY; i++) {
-		mapHowArrayMethod(testArr, multiply);
-	}
-	console.timeEnd("Function MAP_HOW_ARRAY_METHOD");
+  console.time("Function MAP_HOW_ARRAY_METHOD");
+  for (let i = 0; i < ITERATIONS_ARRAY; i++) {
+    mapHowArrayMethod(testArr, multiply);
+  }
+  console.timeEnd("Function MAP_HOW_ARRAY_METHOD");
 }
 
 speedTest();

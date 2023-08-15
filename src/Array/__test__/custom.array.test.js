@@ -1,4 +1,4 @@
-const { CustomArray } = require("../custom.array");
+const { CustomArray } = require("../array");
 
 const DEFAULT_VALUES = {
 	0: 1,
